@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>xrDebug - Lightweight debug utility</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="./css/vendors/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/vendors/swiper-bundle.min.css" />
+    <link href="./style.css" rel="stylesheet">
+    <link href="./godlike.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/xrdebug.png">
+	<link rel="apple-touch-icon" href="./images/xrdebug.png" sizes="114x114">
+</head>
+<body class="font-inter antialiased bg-slate-900 text-slate-200 tracking-tight">
+    <!-- Page wrapper -->
+    <div class="flex flex-col min-h-screen overflow-hidden">
+        <!-- Site header -->
+        <header class="absolute w-full z-30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <!-- Site branding -->
+                    <div class="shrink-0 mr-4">
+                        <!-- Logo -->
+                        <a class="block" href="/" aria-label="xrDebug">
+                            <img src="./images/xrdebug-alt.svg" width="48" class="mx-auto">
+                        </a>
+                    </div>
+                    <!-- Desktop navigation -->
+                    <nav class="flex grow">
+                        <!-- Desktop sign in links -->
+                        <ul class="flex grow justify-end flex-wrap items-center">
+                            <li>
+                                <a class="font-medium text-slate-400 hover:text-slate-300 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="https://docs.xrdebug.com">Docs</a>
+                            </li>
+                            <li class="ml-3">
+                                <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm group xrdebug-gradient" href="https://github.com/xrdebug/xrdebug/releases/latest">
+                                    Download binary <span class="tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- Page content -->
+        <main class="grow">
+            <!-- Hero -->
+            <section class="relative">
+                <!-- Illustration -->
+                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 pointer-events-none -z-10"
+                    aria-hidden="true">
+                    <img src="./images/hero-illustration.svg" class="max-w-none" width="1440" height="1265"
+                        alt="Hero Illustration">
+                </div>
+                <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="pt-32 md:pt-40">
+                        <!-- Hero content -->
+                        <div class="max-w-3xl mx-auto text-center">
+                            <h1 class="h1 font-hkgrotesk mb-6" data-aos="fade-up">xrDebug</h1>
+                            <p class="text-xl text-slate-500" data-aos="fade-up" data-aos-delay="100">Lightweight beautiful debugging tool. Quickly resolve bugs, optimize performance, and save valuable time at every stage of your project.</p>
+                        </div>
+                        <!-- Hero image -->
+                        <div class="pt-16 pb-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                            <video class="mx-auto" width="80%" controls muted autoplay loop>
+                                <source src="xrdebug.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Features -->
+            <section class="relative">
+                <section class="relative border-t border-slate-800">
+                    <!-- Bg gradient: top -->
+                    <div class="absolute top-0 left-0 right-0 bg-gradient-to-b from-slate-800 to-transparent opacity-25 h-[25rem] pointer-events-none -z-10"
+                        aria-hidden="true"></div>
+                    <!-- Bg illustration -->
+                    <div class="absolute left-1/2 -translate-x-1/2 pointer-events-none -mt-20 -z-10" aria-hidden="true">
+                        <img src="./images/features-illustration.svg" class="max-w-none" width="1440" height="440"
+                            alt="Illustration">
+                    </div>
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                        <div class="py-12 md:py-20">
+                            <!-- Section header -->
+                            <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                                <h2 class="h2 font-hkgrotesk mb-4">How it works?</h2>
+                                <p class="text-xl text-slate-500">xrDebug server receives variable introspection by calling helpers in your code. These debug messages gets streamed to the xrDebug web application interface to all connected peers.</p>
+                            </div>
+                            <div class="carousel swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!-- Carousel items -->
+                                    <div class="swiper-slide h-auto flex flex-col bg-slate-800 p-6 rounded">
+                                        <img class="mb-3" src="./images/server_listen.svg" width="60" height="60"
+                                            alt="Icon 01">
+                                        <div class="grow">
+                                            <div class="font-hkgrotesk font-bold text-xl">xrDebug Server</div>
+                                            <div class="text-slate-500 mb-3">It spawns an HTTP web server providing an API in charge of listening to messages emitted from your code.</div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide h-auto flex flex-col bg-slate-800 p-6 rounded">
+                                        <img class="mb-3" src="./images/conf_server.svg" width="50" height="50"
+                                            alt="Icon 02">
+                                        <div class="grow">
+                                            <div class="font-hkgrotesk font-bold text-xl">Configurable</div>
+                                            <div class="text-slate-500 mb-3">Customize server options like port, encryption, TLS cert, signature, keys, target editor and more.</div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide h-auto flex flex-col bg-slate-800 p-6 rounded">
+                                        <img class="mb-3" src="./images/message.svg" width="50" height="50"
+                                            alt="Icon 03">
+                                        <div class="grow">
+                                            <div class="font-hkgrotesk font-bold text-xl">Client libraries</div>
+                                            <div class="text-slate-500 mb-3">Quickly emit messages which will be streamed by the xrDebug web application to all debug session peers.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!-- Integrations -->
+            <section class="relative">
+                <!-- Bottom vertical line -->
+                <div class="hidden md:block absolute w-0.5 h-8 bottom-0 bg-slate-800 left-1/2 -translate-x-1/2"
+                    aria-hidden="true"></div>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="py-12 md:py-20 border-t border-slate-800">
+                        <!-- Section header -->
+                        <div class="max-w-3xl mx-auto text-center pb-12">
+                            <h2 class="h2 font-hkgrotesk">No extra dependencies. Debug your code anywhere!</h2>
+                        </div>
+                        <!-- Logo animation -->
+                        <div class="relative flex flex-col items-center p-16">
+                            <!-- Blurred dots -->
+                            <svg class="absolute top-1/2 -translate-y-1/2" width="557" height="93"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                                        id="hlogo-blurreddots-a">
+                                        <feGaussianBlur stdDeviation="2" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                                        id="blurreddots-b">
+                                        <feGaussianBlur stdDeviation="2" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-150%" y="-150%" width="400%" height="400%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-c">
+                                        <feGaussianBlur stdDeviation="6" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-150%" y="-150%" width="400%" height="400%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-d">
+                                        <feGaussianBlur stdDeviation="4" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-150%" y="-150%" width="400%" height="400%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-e">
+                                        <feGaussianBlur stdDeviation="4" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                                        id="blurreddots-f">
+                                        <feGaussianBlur stdDeviation="2" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-100%" y="-100%" width="300%" height="300%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-g">
+                                        <feGaussianBlur stdDeviation="4" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-150%" y="-150%" width="400%" height="400%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-h">
+                                        <feGaussianBlur stdDeviation="6" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-150%" y="-150%" width="400%" height="400%"
+                                        filterUnits="objectBoundingBox" id="blurreddots-i">
+                                        <feGaussianBlur stdDeviation="4" in="SourceGraphic" />
+                                    </filter>
+                                    <filter x="-75%" y="-75%" width="250%" height="250%" filterUnits="objectBoundingBox"
+                                        id="blurreddots-j">
+                                        <feGaussianBlur stdDeviation="2" in="SourceGraphic" />
+                                    </filter>
+                                </defs>
+                                <g fill="none" fill-rule="evenodd">
+                                    <g class="fill-indigo-600" transform="translate(437 8)">
+                                        <circle fill-opacity=".64" filter="url(#blurreddots-a)" cx="6" cy="66" r="6" />
+                                        <circle fill-opacity=".32" filter="url(#blurreddots-b)" cx="90" cy="6" r="6" />
+                                        <circle fill-opacity=".64" filter="url(#blurreddots-c)" cx="90" cy="66" r="6" />
+                                        <circle fill-opacity=".32" filter="url(#blurreddots-d)" cx="6" cy="36" r="4" />
+                                        <circle fill-opacity=".32" filter="url(#blurreddots-e)" cx="60" cy="36" r="4" />
+                                        <circle fill-opacity=".64" cx="34" cy="22" r="2" />
+                                        <circle fill-opacity=".32" cx="34" cy="50" r="2" />
+                                        <circle fill-opacity=".64" cx="118" cy="22" r="2" />
+                                        <circle fill-opacity=".32" cx="118" cy="50" r="2" />
+                                    </g>
+                                    <g class="fill-indigo-600" transform="matrix(-1 0 0 1 120 8)">
+                                        <circle fill-opacity=".64" filter="url(#blurreddots-f)" cx="6" cy="66" r="6" />
+                                        <circle fill-opacity=".32" filter="url(#blurreddots-g)" cx="90" cy="6" r="6" />
+                                        <circle fill-opacity=".64" filter="url(#blurreddots-h)" cx="90" cy="66" r="6" />
+                                        <circle fill-opacity=".32" filter="url(#blurreddots-i)" cx="6" cy="36" r="4" />
+                                        <circle fill-opacity=".64" filter="url(#blurreddots-j)" cx="60" cy="36" r="4" />
+                                        <circle fill-opacity=".32" cx="34" cy="22" r="2" />
+                                        <circle fill-opacity=".32" cx="34" cy="50" r="2" />
+                                        <circle fill-opacity=".64" cx="118" cy="22" r="2" />
+                                        <circle fill-opacity=".32" cx="118" cy="50" r="2" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <div class="relative w-32 h-32 flex justify-center items-center">
+                                <!-- Halo effect -->
+                                <svg class="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none h-auto max-w-[200%]"
+                                    width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="lg-1">
+                                            <stop stop-color="#0F172A" stop-opacity="0%" offset="100%"></stop>
+                                            <stop stop-color="#0F172A" offset="100%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <g class="fill-indigo-600 opacity-75" fill-rule="evenodd">
+                                        <circle class="pulse" cx="400" cy="400" r="200" />
+                                        <circle class="pulse pulse-1" cx="400" cy="400" r="200" />
+                                        <circle class="pulse pulse-2" cx="400" cy="400" r="200" />
+                                        <circle class="pulse pulse-3" cx="400" cy="400" r="200" />
+                                        <rect fill="url(#lg-1)" width="800" height="800" />
+                                    </g>
+                                </svg>
+                                <!-- Logo -->
+                                <svg class="w-16 h-16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <img src="./images/xrdebug-alt.svg" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Integration boxes -->
+                        <div
+                            class="relative max-w-xs sm:max-w-md mx-auto md:max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-10 md:mt-20">
+                            <!-- Top vertical line -->
+                            <div class="hidden md:block absolute w-0.5 h-8 -top-16 -mt-2 bg-slate-800 left-1/2 -translate-x-1/2"
+                                aria-hidden="true"></div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-1/2 h-0.5 bg-slate-800 right-0"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/IDEA.png" width="45" height="45" alt="Idea">
+                                </div>
+                            </div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up" data-aos-delay="100">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-full h-0.5 bg-slate-800"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/emacs.png" width="45" height="45" alt="Emacs">
+                                </div>
+                            </div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up" data-aos-delay="200">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-full h-0.5 bg-slate-800"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/Atom.png" width="45" height="45" alt="Atom">
+                                </div>
+                            </div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up" data-aos-delay="300">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-full h-0.5 bg-slate-800"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/vscode.png" width="40" height="40" alt="VSCode">
+                                </div>
+                            </div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up" data-aos-delay="400">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-full h-0.5 bg-slate-800"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/sulbime.svg" width="50" height="50" alt="Sublime">
+                                </div>
+                            </div>
+                            <div class="relative flex justify-center items-center bg-slate-800 aspect-square p-2"
+                                data-aos="fade-up" data-aos-delay="500">
+                                <!-- Inner lines -->
+                                <div class="hidden md:block absolute inset-0 w-[calc(100%+24px)] h-6 -top-10 left-1/2 -translate-x-1/2"
+                                    aria-hidden="true">
+                                    <div class="absolute w-0.5 h-full bg-slate-800 left-1/2 -translate-x-1/2"></div>
+                                    <div class="absolute w-1/2 h-0.5 bg-slate-800 left-0"></div>
+                                </div>
+                                <!-- Circle -->
+                                <div
+                                    class="bg-gradient-to-t from-slate-800 to-slate-900 w-20 h-20 rounded-full flex justify-center items-center">
+                                    <!-- Icon -->
+                                    <img src="./images/netbeans.svg" width="40" height="4" alt="Neatbeans">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Features -->
+            <section class="relative border-t border-slate-800">
+                <!-- Bg gradient: top -->
+                <div class="absolute top-0 left-0 right-0 bg-gradient-to-b from-slate-800 to-transparent opacity-25 h-[25rem] pointer-events-none -z-10"
+                    aria-hidden="true"></div>
+                <!-- Illustration -->
+                <div class="hidden lg:block absolute top-0 left-1/2 -translate-x-1/2 mt-40 pointer-events-none -z-10"
+                    aria-hidden="true">
+                    <img src="./images/morado.svg" class="max-w-none" width="1440" height="453"
+                        alt="Features 02 Illustration">
+                </div>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="py-12 md:py-20">
+                        <!-- Section header -->
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                            <h2 class="h2 font-hkgrotesk mb-4">Feature packed</h2>
+                            <p class="text-xl text-slate-500">xrDebug is a language-agnostic dump debug utility. It is portable, packaged as a self-executable binary, with source code distribution. You can use it in your framework, CMS or custom application.</p>
+                        </div>
+                        <!-- Box -->
+                        <div class="bg-slate-800 bg-opacity-60 rounded overflow-hidden" x-data="{ category: '1' }">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between lg:space-x-20">
+                                <div class="md:min-w-[28rem] p-6 lg:p-10">
+                                    <!-- Content -->
+                                    <div>
+                                        <h3 class="h3 font-hkgrotesk mb-2">Feature list</h3>
+                                        <ul class="text-lg text-slate-500 feature-list mb-8">
+                                            <li>Ephemeral, it doesn't store any persistent data</li>
+                                            <li>Signed requests (Ed25519)</li>
+                                            <li>End-to-end encryption (AES-GCM AE)</li>
+                                            <li>Filter messages by Topics and Emotes</li>
+                                            <li>Resume, Pause, Stop and Clear debug window controls</li>
+                                            <li>Keyboard shortcuts (Resume R, Pause P, Stop S and Clear C)</li>
+                                            <li>Re-name "xrDebug" session to anything you want</li>
+                                            <li>Export dump output to clipboard or as PNG image</li>
+                                            <li>Pause and resume your code execution</li>
+                                            <li>Dark / Light mode follows your system preferences</li>
+                                            <li>Portable & HTML based (save page, search, etc.)</li>
+                                            <li>Uses <a class="text-slate-400 hover:text-slate-300" href="https://github.com/tonsky/FiraCode" target="_blank">FiraCode</a> font for displaying beautiful looking dumps ™</li>
+                                            <li>Open with editor links</li>
+                                            <li>Responsive user interface</li>
+                                            <li>Supports multiple peers (web interface)</li>
+                                        </ul>
+                                        <h4 class="h4 font-hkgrotesk mb-2">PHP client features</h4>
+                                        <ul class="text-lg text-slate-500 feature-list">
+                                            <li>Configuration via code and xr.php file</li>
+                                            <li>Dump arguments using <a class="text-slate-400 hover:text-slate-300" href="https://chevere.org/packages/var-dump" target="_blank">VarDump</a></li>
+                                            <li>Generates dump backtrace</li>
+                                            <li>Custom inspectors</li>
+                                            <li>Handle errors and exceptions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <img src="./images/features-image.png" class="md:max-w-none" width="480" height="414" alt="Feature">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Footer -->
+            <footer>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <!-- Blocks -->
+                    <div class="grid sm:grid-cols-12 lg:grid-cols-10 gap-8 py-8 md:py-12 border-t border-slate-800">
+
+                        <!-- 1st block -->
+                        <div class="sm:col-span-12 lg:col-span-2 lg:max-w-xs">
+                            <div class="mb-2">
+                                <!-- Logo -->
+                                <a class="inline-flex" href="https://chevere.org/" aria-label="Chevere" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Chevere" width="150" height="150" viewBox="0 0 395.5 395.5">
+                                        <defs>
+                                            <linearGradient id="Cooler" x1="725.45" y1="1920.6" x2="725.45" y2="1678.8" gradientTransform="translate(-558.2 -1601.9)" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0" stop-color="#2a97ff"/>
+                                                <stop offset="1" stop-color="#00e97e"/>
+                                            </linearGradient>
+                                            <linearGradient id="O-Connor" x1="798.54" y1="1919.93" x2="798.54" y2="1679.5" xlink:href="#Cooler"/>
+                                        </defs>
+                                        <path d="M55.8,0H341.1a55.1,55.1,0,0,1,55.1,55.1V340.4a55.1,55.1,0,0,1-55.1,55.1H55.8a55.1,55.1,0,0,1-55-55.1V55.1A55.1,55.1,0,0,1,55.8,0Z" transform="translate(-0.8)" fill="transparent"/>
+                                        <path d="M63,198.5v-.7c0-66.1,49.4-120.9,118.2-120.9,37.9,0,61.9,12.3,83.6,30.4a14.2,14.2,0,0,1,5.3,10.7c0,7-6.3,13-13.3,13a15.7,15.7,0,0,1-8.7-3c-18-16.1-38.5-26.7-67.1-26.7-51.8,0-90.5,42-90.5,95.8v.7c0,54.1,39.1,96.5,90.5,96.5,29.1,0,49.4-10,69.5-28.4a12.4,12.4,0,0,1,8.3-3.6c6.7,0,12.7,6,12.7,12.6a12.6,12.6,0,0,1-4.3,9.4c-23.1,21-48.4,34.4-86.9,34.4C112.8,318.7,63,265.6,63,198.5Z" transform="translate(-0.8)" fill="url(#Cooler)"/>
+                                        <path d="M318.9,77.7a13.6,13.6,0,0,0-11.3,13.4v82.2A13.6,13.6,0,0,1,294,186.9H214.3a13.7,13.7,0,0,1-10.9-5.4,31.6,31.6,0,1,0-5.8,44.3,33.2,33.2,0,0,0,6.6-6.9,13.8,13.8,0,0,1,11.2-5.7H294a13.6,13.6,0,0,1,13.6,13.6v77.7a13.5,13.5,0,0,0,11.3,13.4,13.2,13.2,0,0,0,14.9-11.1,12.1,12.1,0,0,0,.1-1.9V90.7a13.1,13.1,0,0,0-13.1-13.1Z" transform="translate(-0.8)" fill="url(#O-Connor)"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-6 md:col-span-3 lg:col-span-2">
+                            <h6 class="text-xs text-slate-200 font-semibold uppercase mb-3">Chevere</h6>
+                            <ul class="text-sm space-y-2">
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" target="_blank" href="https://chevere.org">Chevere.org</a>
+                                </li>
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" target="_blank" href="https://github.com/chevere">GitHub</a>
+                                </li>
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" target="_blank" href="https://packagist.org/packages/chevere/">Packagist</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sm:col-span-6 md:col-span-3 lg:col-span-2">
+                            <h6 class="text-xs text-slate-200 font-semibold uppercase mb-3">xrDebug</h6>
+                            <ul class="text-sm space-y-2">
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" href="https://docs.xrdebug.com">Documentation</a>
+                                </li>
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" href="https://github.com/xrdebug/xrdebug/releases/latest">Download</a>
+                                </li>
+                                <li>
+                                    <a class="text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out" href="https://github.com/xrdebug/php">PHP client</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom area -->
+                    <div class="md:flex md:items-center md:justify-between pb-4 md:pb-8">
+                        <!-- Social links -->
+                        <ul class="flex mb-4 md:order-1 md:ml-4 md:mb-0">
+                            <li class="ml-2">
+                                <a class="flex justify-center items-center text-slate-500 hover:text-slate-300 transition duration-150 ease-in-out"
+                                    href="https://github.com/chevere/xrdebug" aria-label="Github">
+                                    <img src="./images/chevere.svg"
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Links -->
+                        <div class="text-sm text-slate-500 transition duration-150 ease-in-out">Chevere Software &copy; <a rel="author" class="hover:text-slate-300" href="https://rodolfoberrios.com" target="_blank">Rodolfo Berrios</a></div>
+                    </div>
+            </footer>
+    </div>
+    <script src="./js/vendors/alpinejs.min.js" defer></script>
+    <script src="./js/vendors/aos.js"></script>
+    <script src="./js/vendors/swiper-bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

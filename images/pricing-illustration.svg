@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1440 440" style="enable-background:new 0 0 1440 440;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#b);}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_1_);}
+</style>
+<filter  filterUnits="objectBoundingBox" height="475%" id="b" width="147.2%" x="-23.6%" y="-187.5%">
+	<feGaussianBlur  in="SourceGraphic" stdDeviation="50"></feGaussianBlur>
+</filter>
+<g class="st0">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-416.3521" y1="1254.9657" x2="-417.24" y2="1254.9657" gradientTransform="matrix(596.7049 -217.1828 -27.3616 -75.1754 283839.1562 4033.2017)">
+		<stop  offset="0" style="stop-color:#6366F1;stop-opacity:0.64"/>
+		<stop  offset="1" style="stop-color:#6366F1;stop-opacity:0"/>
+	</linearGradient>
+	<polygon class="st1" points="495.3,278.8 489.2,366.2 1052.5,161.2 1058.5,73.8 	"/>
+</g>
+</svg>
