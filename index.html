@@ -30,11 +30,11 @@
                         <!-- Desktop sign in links -->
                         <ul class="flex grow justify-end flex-wrap items-center">
                             <li>
-                                <a class="font-medium text-slate-400 hover:text-slate-300 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="https://docs.xrdebug.com">Docs</a>
+                                <a class="font-medium text-slate-400 hover:text-slate-300 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="https://docs.xrdebug.com/run/">xrdebug &lt;options&gt;</a>
                             </li>
                             <li class="ml-3">
-                                <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm group xrdebug-gradient" href="https://github.com/xrdebug/xrdebug/releases/latest">
-                                    Download <span class="tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                                <a class="btn-sm text-white bg-indigo-500 hover:bg-indigo-600 w-full shadow-sm group xrdebug-gradient" href="https://docs.xrdebug.com/install/">
+                                    Install <span class="tracking-normal group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                                 </a>
                             </li>
                         </ul>
@@ -58,6 +58,7 @@
                         <div class="max-w-3xl mx-auto text-center">
                             <h1 class="h1 font-hkgrotesk mb-6" data-aos="fade-up">xrDebug</h1>
                             <p class="text-xl text-slate-500" data-aos="fade-up" data-aos-delay="100">Lightweight beautiful debugging tool. Quickly resolve bugs, optimize performance, and save valuable time at every stage of your project.</p>
+                            <input id="command-install" class="command-install form-input text-sm py-2 w-full" value="bash <(curl -sL xrdebug.com/bin.sh)">
                         </div>
                         <!-- Hero image -->
                         <div class="pt-16 pb-12 mb-4" data-aos="fade-up" data-aos-delay="300">
@@ -450,5 +451,6 @@
     <script src="./js/vendors/aos.js"></script>
     <script src="./js/vendors/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./godlike.js"></script>
 </body>
 </html>
