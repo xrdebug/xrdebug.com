@@ -60,6 +60,8 @@ echo "* Download complete"
 if [ "${system}" = "Linux" ]; then
     echo "* Extracting xrdebug-linux-*.tar.gz"
     tar -xvf xrdebug-linux-*.tar.gz
+    chmod +x xrdebug
+    mv xrdebug /usr/local/bin/xrdebug
 fi
 if [ "${system}" = "Mac" ]; then
     echo "* Opening xrdebug-macos-*.pkg to continue installation"
