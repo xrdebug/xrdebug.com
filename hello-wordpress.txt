@@ -1,0 +1,4 @@
+xrDebug is copyrighted by Rodolfo Berrios
+The plugin slug "xrdebug" was picked by me.
+
+https://rodolfoberrios.com
