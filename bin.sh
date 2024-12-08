@@ -11,8 +11,8 @@ cat <<'EOM'
 
 EOM
 ARTIFACT_BASE_URL="https://github.com/xrdebug/xrdebug/releases/latest/download/"
-MAC_BINARY_ARM64="${ARTIFACT_BASE_URL}xrdebug-macos-arm64.pkg"
-MAC_BINARY_X86_64="${ARTIFACT_BASE_URL}xrdebug-macos-x86_64.pkg"
+MAC_BINARY_ARM64="${ARTIFACT_BASE_URL}xrdebug-macos-arm64.tar.gz"
+MAC_BINARY_X86_64="${ARTIFACT_BASE_URL}xrdebug-macos-x86_64.tar.gz"
 LINUX_BINARY_AARCH64="${ARTIFACT_BASE_URL}xrdebug-linux-aarch64.tar.gz"
 LINUX_BINARY_X86_64="${ARTIFACT_BASE_URL}xrdebug-linux-x86_64.tar.gz"
 useArchitecture=$(uname -m)
@@ -66,6 +66,10 @@ if [ "${system}" = "Linux" ]; then
     mv xrdebug /usr/local/bin/xrdebug
 fi
 if [ "${system}" = "Mac" ]; then
-    echo "* Opening xrdebug-macos-*.pkg to continue installation"
-    open xrdebug-macos-*.pkg
+    echo "* Extracting xrdebug-macos-*.tar.gz"
+    tar -xvf xrdebug-macos-*.tar.gz
+    echo "* Setting xrdebug as executable"
+    chmod +x xrdebug
+    echo "* Moving xrdebug to /usr/local/bin"
+    mv xrdebug /usr/local/bin/xrdebug
 fi
