@@ -63,7 +63,7 @@ if [ "${system}" = "Linux" ]; then
     echo "* Setting xrdebug as executable"
     chmod +x xrdebug
     echo "* Moving xrdebug to /usr/local/bin"
-    mv xrdebug /usr/local/bin/xrdebug
+    sudo mv xrdebug /usr/local/bin/xrdebug
 fi
 if [ "${system}" = "Mac" ]; then
     echo "* Extracting xrdebug-macos-*.tar.gz"
@@ -71,5 +71,5 @@ if [ "${system}" = "Mac" ]; then
     echo "* Setting xrdebug as executable"
     chmod +x xrdebug
     echo "* Moving xrdebug to /usr/local/bin"
-    mv xrdebug /usr/local/bin/xrdebug
+    sudo mv xrdebug /usr/local/bin/xrdebug
 fi
