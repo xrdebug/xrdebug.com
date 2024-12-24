@@ -1,4 +1,4 @@
-# Provides multi-arch xrDebug binary for Linux and macOS
+# Provides automated installation for xrDebug V3 on Linux, macOS and FreeBSD.
 #!/usr/bin/env bash
 set -e
 cat <<'EOM'
@@ -11,65 +11,37 @@ cat <<'EOM'
 
 EOM
 ARTIFACT_BASE_URL="https://github.com/xrdebug/xrdebug/releases/latest/download/"
-MAC_BINARY_ARM64="${ARTIFACT_BASE_URL}xrdebug-macos-arm64.tar.gz"
-MAC_BINARY_X86_64="${ARTIFACT_BASE_URL}xrdebug-macos-x86_64.tar.gz"
-LINUX_BINARY_AARCH64="${ARTIFACT_BASE_URL}xrdebug-linux-aarch64.tar.gz"
-LINUX_BINARY_X86_64="${ARTIFACT_BASE_URL}xrdebug-linux-x86_64.tar.gz"
-useArchitecture=$(uname -m)
-useSystem=$(uname -s)
-architecture=""
-system=""
-case "${useArchitecture}" in
-x86_64) architecture="amd64" ;;
-arm64) architecture="arm64" ;;
-aarch64) architecture="arm64" ;;
+VERSION=$(curl -s https://api.github.com/repos/xrdebug/xrdebug/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/^v//')
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+case "$OS" in
+darwin) OS="macos" ;;
 esac
-case "${useSystem}" in
-Linux*) system=Linux ;;
-Darwin*) system=Mac ;;
-*) ;;
+ARCH=$(uname -m)
+case "$ARCH" in
+x86_64) ARCH="amd64" ;;
+aarch64 | arm64) ARCH="arm64" ;;
+*)
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+    ;;
 esac
-if [ -z "${architecture}" ]; then
-    echo "[!] Unsupported architecture [${useArchitecture}]"
+ARTIFACT_NAME="xrdebug-${VERSION}-${OS}-${ARCH}.tar.gz"
+DOWNLOAD_URL="${ARTIFACT_BASE_URL}${ARTIFACT_NAME}"
+echo "Downloading xrDebug ${VERSION} for ${OS}/${ARCH}..."
+if ! curl -fL -o "${ARTIFACT_NAME}" "${DOWNLOAD_URL}"; then
+    echo "Error: Failed to download ${ARTIFACT_NAME}"
+    echo "URL: ${DOWNLOAD_URL}"
     exit 1
 fi
-if [ -z "${system}" ]; then
-    echo "[!] Unsupported system [${useSystem}]"
-    exit 1
+tar xzf "${ARTIFACT_NAME}"
+rm "${ARTIFACT_NAME}"
+if [ -w "/usr/local/bin" ]; then
+    mv xrdebug "/usr/local/bin/xrdebug"
+    chmod +x "/usr/local/bin/xrdebug"
+else
+    echo "Requesting sudo access to install xrdebug to /usr/local/bin..."
+    sudo mv xrdebug "/usr/local/bin/xrdebug"
+    sudo chmod +x "/usr/local/bin/xrdebug"
 fi
-echo "* Requesting xrDebug for ${system} [${architecture}]"
-if [ "${system}" = "Linux" ]; then
-    if [ "${architecture}" = "arm64" ]; then
-        DOWNLOAD_URL=${LINUX_BINARY_AARCH64}
-    fi
-    if [ "${architecture}" = "amd64" ]; then
-        DOWNLOAD_URL=${LINUX_BINARY_X86_64}
-    fi
-fi
-if [ "${system}" = "Mac" ]; then
-    if [ "${architecture}" = "arm64" ]; then
-        DOWNLOAD_URL=${MAC_BINARY_ARM64}
-    fi
-    if [ "${architecture}" = "amd64" ]; then
-        DOWNLOAD_URL=${MAC_BINARY_X86_64}
-    fi
-fi
-echo "* Downloading ${DOWNLOAD_URL}"
-curl -sLO ${DOWNLOAD_URL}
-echo "* Download complete"
-if [ "${system}" = "Linux" ]; then
-    echo "* Extracting xrdebug-linux-*.tar.gz"
-    tar -xvf xrdebug-linux-*.tar.gz
-    echo "* Setting xrdebug as executable"
-    chmod +x xrdebug
-    echo "* Moving xrdebug to /usr/local/bin"
-    sudo mv xrdebug /usr/local/bin/xrdebug
-fi
-if [ "${system}" = "Mac" ]; then
-    echo "* Extracting xrdebug-macos-*.tar.gz"
-    tar -xvf xrdebug-macos-*.tar.gz
-    echo "* Setting xrdebug as executable"
-    chmod +x xrdebug
-    echo "* Moving xrdebug to /usr/local/bin"
-    sudo mv xrdebug /usr/local/bin/xrdebug
-fi
+echo "xrDebug ${VERSION} has been installed successfully!"
+echo "You can now run 'xrdebug' from anywhere in your terminal."
