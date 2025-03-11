@@ -11,7 +11,7 @@ cat <<'EOM'
 
 EOM
 ARTIFACT_BASE_URL="https://github.com/xrdebug/xrdebug/releases/latest/download/"
-VERSION=$(curl -s https://api.github.com/repos/xrdebug/xrdebug/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/^v//')
+VERSION=$(curl -s https://api.github.com/repos/xrdebug/xrdebug/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 case "$OS" in
 darwin) OS="macos" ;;
